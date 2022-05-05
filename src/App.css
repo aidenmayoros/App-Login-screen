@@ -1,29 +1,50 @@
-html {
-	background-color: rgb(32, 170, 255);
-}
-
 ::placeholder {
-	color: rgb(32, 170, 255);
+	color: #000000;
 }
 
-.app {
+body,
+html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	min-height: 100vh;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.appLogo {
+	padding: 2em;
+	height: 200px;
+	width: 200px;
+}
+
+.loginPageHeader {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	color: white;
+	background-color: #ffffff;
+	width: 100%;
+	border-bottom: solid 5px #000000;
 }
 
-.app_name {
-	padding-bottom: 1em;
-	font-size: 5vw;
+.loginScreen {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #faf9f6;
+	height: 100vh;
 }
 
-.icon {
-	width: 10%;
+.loginScreenRight h1 {
+	padding-bottom: 3em;
 }
 
 .input {
-	color: rgb(32, 170, 255);
+	color: #000000;
 	border: none;
 	width: 20vw;
 }
@@ -38,9 +59,16 @@ html {
 .formButton,
 .logoutButton {
 	color: white;
-	background-color: rgb(32, 170, 255);
+	background-color: #087e8b;
 	border: solid 0.3em white;
 	width: 22.5vw;
+	transition: all 0.5s ease;
+}
+
+.formButton:hover,
+.logoutButton:hover {
+	background-color: white;
+	color: #000000;
 }
 
 .formButton,
@@ -53,11 +81,97 @@ html {
 hr {
 	width: 30vw;
 	height: 2px;
-	color: white;
 	border: none;
 	background-color: white;
 }
 
-.welcomeScreenLine {
-	margin-top: 9vh;
+.homePageContainer {
+	height: 100%;
+	width: 100%;
+	min-height: 100vh;
+	padding-bottom: 1em;
+	background-color: #faf9f6;
+}
+
+.homePageHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #ffffff;
+	border-bottom: solid 5px #000000;
+}
+
+.homePageHeader button {
+	margin-right: 2em;
+}
+
+.income-and-expenses {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#total-expenses-accordion1,
+#total-expenses-accordion2 {
+	display: flex;
+	justify-content: center;
+	margin: 1em;
+	width: 50%;
+}
+
+#total-expenses-container {
+	border: none;
+}
+
+.accordion-body {
+	background-color: #ffffff;
+	width: 80%;
+	display: flex;
+	margin: -2% 10%;
+	border-radius: 1em;
+}
+
+#total-expenses-button {
+	background-color: #087e8b;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 1.7em;
+	border: none;
+	box-shadow: none;
+	margin-right: 1.5em;
+	border-radius: 1em;
+	width: 100%;
+}
+
+.each-expense {
+	font-size: 0.5em;
+	display: flex;
+	flex-direction: row;
+	padding: 1em;
+	align-items: center;
+}
+
+.homePageDataInputs {
+	justify-content: center;
+	align-items: center;
+	display: flex;
+
+	width: 80%;
+}
+
+.home-page-add-data {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2em;
+	margin: 0.5em;
+
+	border-radius: 1em;
+}
+
+.home-page-add-data h1 {
+	font-weight: bold;
+	font-size: 1.5em;
 }

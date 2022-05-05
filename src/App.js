@@ -1,24 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-import logo from "./images/logo.png";
-import WelcomeMessage from "./welcomeMessage";
-import Form from "./form";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginPage from "./pages/Login";
+import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
+import { createServer } from "miragejs";
+import mockExpenses from "./Data/mockExpenses";
+import mockIncome from "./Data/mockIncome";
+import Navbar from "./components/Navbar";
 
-function LoginScreen({ user, updateUser }) {
-	return (
-		<div className='app'>
-			<img className='icon' src={logo} alt='Logo'></img>
-			<div className='app_name'>App name</div>
-			{user ? (
-				<WelcomeMessage user={user} logout={updateUser} />
-			) : (
-				<Form login={updateUser} />
-			)}
-		</div>
-	);
-}
+let server = createServer();
+const mockUser = { id: 1, name: "Bob" };
+
+server.get("/api/users", mockUser);
+server.get("/api/expenses", mockExpenses);
+server.get("/api/income", mockIncome);
 
 export default function App() {
-	const [user, setUser] = useState(null);
-	return <LoginScreen user={user} updateUser={setUser} />;
+	const [user, setUser] = useState();
+
+	return (
+		<Router>
+			<Navbar />
+			<Routes>
+				<Route path='/' element={<LoginPage login={setUser} />} />
+				<Route path='/register' element={<RegisterPage register={setUser} />} />
+				<Route path='/home' element={<HomePage user={user} />} />
+			</Routes>
+		</Router>
+	);
 }
